@@ -24,7 +24,7 @@
                      
                         <div class="form-group mb-3">
                             <label>Text</label>
-                            <textarea name="text" class="form-control"></textarea>
+                            <textarea name="text" class="form-control h_100"></textarea>
                         </div>
                      
                         <div class="form-group">

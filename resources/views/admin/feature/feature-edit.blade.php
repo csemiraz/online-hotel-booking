@@ -24,7 +24,7 @@
                      
                         <div class="form-group mb-3">
                             <label>Text</label>
-                            <textarea name="text" class="form-control" cols="30" rows="10">{{ $feature->text }}</textarea>
+                            <textarea name="text" class="form-control h_100" cols="30" rows="10">{{ $feature->text }}</textarea>
                         </div>
                      
                         <div class="form-group">

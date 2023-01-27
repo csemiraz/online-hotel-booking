@@ -6,6 +6,7 @@ use App\Models\Slide;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Feature;
+use App\Models\Testimonial;
 
 class HomeController extends Controller
 {
@@ -13,6 +14,7 @@ class HomeController extends Controller
     {
         $slides = Slide::orderBy('id', 'asc')->get();
         $features = Feature::orderBy('id', 'asc')->get();
-        return view("front.home", compact('slides', 'features'));
+        $testimonials = Testimonial::orderBy('id', 'asc')->get();
+        return view("front.home", compact('slides', 'features', 'testimonials'));
     }
 }
