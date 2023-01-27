@@ -19,7 +19,15 @@
                 </ul>
             </li> --}}
 
-            <li class="{{ Request::is('admin/slide/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_slide_view') }}"><i class="fas fa-hand-point-right"></i> <span>Slide</span></a></li>
+            <li class="{{ Request::is('admin/slide/*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin_slide_view') }}"><i class="fas fa-hand-point-right"></i> <span>Slide</span>
+                </a>
+            </li>
+
+            <li class="{{ Request::is('admin/feature/*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin_feature_view') }}"><i class="fas fa-hand-point-right"></i> <span>Feature</span>
+                </a>
+            </li>
 
 
         </ul>

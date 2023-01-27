@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="{{ asset('back-end/dist/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('back-end/dist/css/font_awesome_5_free.min.css') }}">
+<link rel="stylesheet" href="{{ asset('front/css/font-awesome.min.css') }}">
 <link rel="stylesheet" href="{{ asset('back-end/dist/css/select2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('back-end/dist/css/bootstrap-datepicker.min.css') }}">
 <link rel="stylesheet" href="{{ asset('back-end/dist/css/bootstrap-timepicker.min.css') }}">
