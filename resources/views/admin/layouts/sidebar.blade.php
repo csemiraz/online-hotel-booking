@@ -34,6 +34,11 @@
                 </a>
             </li>
 
+            <li class="{{ Request::is('admin/post/*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin_post_view') }}"><i class="fas fa-hand-point-right"></i> <span>Post</span>
+                </a>
+            </li>
+
 
         </ul>
     </aside>

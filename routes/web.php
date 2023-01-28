@@ -3,14 +3,18 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
+use App\Http\Controllers\Front\PostController;
 
 /* Front */
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
+Route::get('/post/{id}', [PostController::class, 'post_detail'])->name('post_detail');
 
 /* Admin */
 Route::get('admin/login', [AdminLoginController::class, 'index'])->name('admin_login');
@@ -48,5 +52,12 @@ Route::group(['middleware'=>['admin:admin']], function() {
     Route::get('admin/testimonial/edit/{id}', [AdminTestimonialController::class, 'edit'])->name('admin_testimonial_edit');
     Route::post('admin/testimonial/update/{id}', [AdminTestimonialController::class, 'update'])->name('admin_testimonial_update');
     Route::get('admin/testimonial/delete/{id}', [AdminTestimonialController::class, 'delete'])->name('admin_testimonial_delete');
+
+    Route::get('admin/post/view', [AdminPostController::class, 'index'])->name('admin_post_view');
+    Route::get('admin/post/create', [AdminPostController::class, 'create'])->name('admin_post_create');
+    Route::post('admin/post/store', [AdminPostController::class, 'store'])->name('admin_post_store');
+    Route::get('admin/post/edit/{id}', [AdminPostController::class, 'edit'])->name('admin_post_edit');
+    Route::post('admin/post/update/{id}', [AdminPostController::class, 'update'])->name('admin_post_update');
+    Route::get('admin/post/delete/{id}', [AdminPostController::class, 'delete'])->name('admin_post_delete');
     
 });
