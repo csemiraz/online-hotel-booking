@@ -39,6 +39,16 @@
                 </a>
             </li>
 
+            <li class="{{ Request::is('admin/photo/*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin_photo_view') }}"><i class="fas fa-hand-point-right"></i> <span>Photo</span>
+                </a>
+            </li>
+
+            <li class="{{ Request::is('admin/video/*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin_video_view') }}"><i class="fas fa-hand-point-right"></i> <span>Video</span>
+                </a>
+            </li>
+
 
         </ul>
     </aside>

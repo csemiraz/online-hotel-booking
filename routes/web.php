@@ -2,19 +2,25 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\PostController;
+use App\Http\Controllers\Front\PhotoController;
+use App\Http\Controllers\Front\VideoController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminSlideController;
+use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
-use App\Http\Controllers\Front\PostController;
 
 /* Front */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::get('/post/{id}', [PostController::class, 'post_detail'])->name('post_detail');
+Route::get('/photo-gallery', [PhotoController::class, 'index'])->name('photo_gallery');
+Route::get('/video-gallery', [VideoController::class, 'index'])->name('video_gallery');
 
 /* Admin */
 Route::get('admin/login', [AdminLoginController::class, 'index'])->name('admin_login');
@@ -59,5 +65,20 @@ Route::group(['middleware'=>['admin:admin']], function() {
     Route::get('admin/post/edit/{id}', [AdminPostController::class, 'edit'])->name('admin_post_edit');
     Route::post('admin/post/update/{id}', [AdminPostController::class, 'update'])->name('admin_post_update');
     Route::get('admin/post/delete/{id}', [AdminPostController::class, 'delete'])->name('admin_post_delete');
+
+    Route::get('admin/photo/view', [AdminPhotoController::class, 'index'])->name('admin_photo_view');
+    Route::get('admin/photo/create', [AdminPhotoController::class, 'create'])->name('admin_photo_create');
+    Route::post('admin/photo/store', [AdminPhotoController::class, 'store'])->name('admin_photo_store');
+    Route::get('admin/photo/edit/{id}', [AdminPhotoController::class, 'edit'])->name('admin_photo_edit');
+    Route::post('admin/photo/update/{id}', [AdminPhotoController::class, 'update'])->name('admin_photo_update');
+    Route::get('admin/photo/delete/{id}', [AdminPhotoController::class, 'delete'])->name('admin_photo_delete');
+
+    Route::get('admin/video/view', [AdminVideoController::class, 'index'])->name('admin_video_view');
+    Route::get('admin/video/create', [AdminVideoController::class, 'create'])->name('admin_video_create');
+    Route::post('admin/video/store', [AdminVideoController::class, 'store'])->name('admin_video_store');
+    Route::get('admin/video/edit/{id}', [AdminVideoController::class, 'edit'])->name('admin_video_edit');
+    Route::post('admin/video/update/{id}', [AdminVideoController::class, 'update'])->name('admin_video_update');
+    Route::get('admin/video/delete/{id}', [AdminVideoController::class, 'delete'])->name('admin_video_delete');
+    
     
 });

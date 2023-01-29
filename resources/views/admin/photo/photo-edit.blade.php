@@ -1,8 +1,8 @@
 @extends('admin.layouts.app')
-@section('title', 'Edit | Post')
-@section('heading', 'Edit Post')
+@section('title', 'Edit | Photo')
+@section('heading', 'Edit Photo')
 @section('button')
-    <a href="{{ route('admin_post_view') }}" class="btn btn-primary"><i class="fas fa-eye"></i> View</a>
+    <a href="{{ route('admin_photo_view') }}" class="btn btn-primary"><i class="fas fa-eye"></i> View</a>
 @endsection
 @section('main_content')
 <div class="section-body">
@@ -10,12 +10,12 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin_post_update', $post->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin_photo_update', $photo->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-3">
                             <label>Existing Photo</label>
                             <div>
-                                <img class="w_300 h_200" src="{{ asset('images/'.$post->photo) }}" alt="post_photo">
+                                <img class="w_300 h_200" src="{{ asset('images/'.$photo->photo) }}" alt="post_photo">
                             </div>
                         </div>
 
@@ -27,13 +27,8 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label>Title*</label>
-                            <input type="text" class="form-control" name="title" value="{{ $post->title }}">
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label>Content*</label>
-                            <textarea name="content" class="form-control snote" cols="30" rows="10">{{ $post->content }}</textarea>
+                            <label>Caption</label>
+                            <textarea name="caption" class="form-control h_100" cols="30" rows="10">{{ $photo->caption }}</textarea>
                         </div>
                      
                         <div class="form-group">
