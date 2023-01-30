@@ -7,7 +7,7 @@
                     <ul class="useful-links">
                         <li><a href="rooms.html">Rooms & Suites</a></li>
                         <li><a href="{{ route('photo_gallery') }}">Photo Gallery</a></li>
-                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="{{ route('posts') }}">Blog</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -18,6 +18,7 @@
                     <ul class="useful-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="terms.html">Terms and Conditions</a></li>
+                        <li><a href="{{ route('faq') }}">FAQ</a></li>
                         <li><a href="privacy.html">Privacy Policy</a></li>
                         <li><a href="disclaimer.html">Disclaimer</a></li>
                     </ul>

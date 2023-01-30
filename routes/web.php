@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Front\PhotoController;
 use App\Http\Controllers\Front\VideoController;
+use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -21,6 +23,7 @@ Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::get('/post/{id}', [PostController::class, 'post_detail'])->name('post_detail');
 Route::get('/photo-gallery', [PhotoController::class, 'index'])->name('photo_gallery');
 Route::get('/video-gallery', [VideoController::class, 'index'])->name('video_gallery');
+Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 
 /* Admin */
 Route::get('admin/login', [AdminLoginController::class, 'index'])->name('admin_login');
@@ -79,6 +82,13 @@ Route::group(['middleware'=>['admin:admin']], function() {
     Route::get('admin/video/edit/{id}', [AdminVideoController::class, 'edit'])->name('admin_video_edit');
     Route::post('admin/video/update/{id}', [AdminVideoController::class, 'update'])->name('admin_video_update');
     Route::get('admin/video/delete/{id}', [AdminVideoController::class, 'delete'])->name('admin_video_delete');
+
+    Route::get('admin/faq/view', [AdminFaqController::class, 'index'])->name('admin_faq_view');
+    Route::get('admin/faq/create', [AdminFaqController::class, 'create'])->name('admin_faq_create');
+    Route::post('admin/video/store', [AdminFaqController::class, 'store'])->name('admin_faq_store');
+    Route::get('admin/faq/edit/{id}', [AdminFaqController::class, 'edit'])->name('admin_faq_edit');
+    Route::post('admin/faq/update/{id}', [AdminFaqController::class, 'update'])->name('admin_faq_update');
+    Route::get('admin/faq/delete/{id}', [AdminFaqController::class, 'delete'])->name('admin_faq_delete');
     
     
 });

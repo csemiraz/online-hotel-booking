@@ -49,6 +49,11 @@
                 </a>
             </li>
 
+            <li class="{{ Request::is('admin/faq/*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin_faq_view') }}"><i class="fas fa-hand-point-right"></i> <span>FAQ</span>
+                </a>
+            </li>
+
 
         </ul>
     </aside>
