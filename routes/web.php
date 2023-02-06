@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Front\DisclaimerController;
 use App\Http\Controllers\Front\SubscriberController;
+use App\Http\Controllers\Admin\AdminAmenityController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminSubscriberController;
@@ -103,7 +104,7 @@ Route::group(['middleware'=>['admin:admin']], function() {
 
     Route::get('admin/faq/view', [AdminFaqController::class, 'index'])->name('admin_faq_view');
     Route::get('admin/faq/create', [AdminFaqController::class, 'create'])->name('admin_faq_create');
-    Route::post('admin/video/store', [AdminFaqController::class, 'store'])->name('admin_faq_store');
+    Route::post('admin/faq/store', [AdminFaqController::class, 'store'])->name('admin_faq_store');
     Route::get('admin/faq/edit/{id}', [AdminFaqController::class, 'edit'])->name('admin_faq_edit');
     Route::post('admin/faq/update/{id}', [AdminFaqController::class, 'update'])->name('admin_faq_update');
     Route::get('admin/faq/delete/{id}', [AdminFaqController::class, 'delete'])->name('admin_faq_delete');
@@ -139,6 +140,13 @@ Route::group(['middleware'=>['admin:admin']], function() {
     Route::get('admin/subscriber/view', [AdminSubscriberController::class, 'view'])->name('admin_subscriber_view');
     Route::get('admin/subscriber/send-email', [AdminSubscriberController::class, 'send_email'])->name('admin_subscriber_send_email');
     Route::post('admin/subscriber/send-email-submit', [AdminSubscriberController::class, 'send_email_submit'])->name('admin_subscriber_send_email_submit');
+
+    Route::get('admin/amenity/view', [AdminAmenityController::class, 'index'])->name('admin_amenity_view');
+    Route::get('admin/amenity/create', [AdminAmenityController::class, 'create'])->name('admin_amenity_create');
+    Route::post('admin/amenity/store', [AdminAmenityController::class, 'store'])->name('admin_amenity_store');
+    Route::get('admin/amenity/edit/{id}', [AdminAmenityController::class, 'edit'])->name('admin_amenity_edit');
+    Route::post('admin/amenity/update/{id}', [AdminAmenityController::class, 'update'])->name('admin_amenity_update');
+    Route::get('admin/amenity/delete/{id}', [AdminAmenityController::class, 'delete'])->name('admin_amenity_delete');
     
     
     

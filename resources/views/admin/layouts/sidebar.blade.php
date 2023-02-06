@@ -88,6 +88,17 @@
                 </a>
             </li>
 
+            <li class="nav-item dropdown {{ Request::is('admin/amenity/view') ? 'active' : ''}}">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Room Section</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/amenity/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_amenity_view') }}"><i class="fas fa-angle-right"></i> Amenities</a></li>
+
+                    <li class="{{ Request::is('admin/page/terms') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_page_terms') }}"><i class="fas fa-angle-right"></i> Rooms</a></li>
+                </ul>
+            </li>
+
+         
+
           
 
 
