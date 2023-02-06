@@ -33,7 +33,7 @@ class WebsiteMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Website Mail',
+            subject: $this->subject,
         );
     }
 
@@ -42,15 +42,13 @@ class WebsiteMail extends Mailable
      *
      * @return \Illuminate\Mail\Mailables\Content
      */
-    public function content()
+ public function content()
     {
         return new Content(
             view: 'email.email',
-            with: [
-                'subject' => $this->subject
-            ],
         );
     }
+
 
     /**
      * Get the attachments for the message.

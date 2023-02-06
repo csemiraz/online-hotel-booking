@@ -19,8 +19,10 @@ use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Front\DisclaimerController;
+use App\Http\Controllers\Front\SubscriberController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 
 /* Front */
@@ -36,6 +38,8 @@ Route::get('/privacy-policy', [PrivacyController::class, 'index'])->name('privac
 Route::get('/disclaimer', [DisclaimerController::class, 'index'])->name('disclaimer');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact/send-email', [ContactController::class, 'send_email'])->name('contact_send_email');
+Route::post('/subscriber/send-email', [SubscriberController::class, 'send_email'])->name('subscriber_send_email');
+Route::get('/subscriber/verify/{email}/{token}', [SubscriberController::class, 'verify'])->name('subscriber_verify');
 
 
 
@@ -132,6 +136,9 @@ Route::group(['middleware'=>['admin:admin']], function() {
     Route::post('admin/page/signup/update', [AdminPageController::class, 'signup_update'])->name('admin_page_signup_update');
     Route::get('admin/page/signin', [AdminPageController::class, 'signin'])->name('admin_page_signin');
     Route::post('admin/page/signin/update', [AdminPageController::class, 'signin_update'])->name('admin_page_signin_update');
+    Route::get('admin/subscriber/view', [AdminSubscriberController::class, 'view'])->name('admin_subscriber_view');
+    Route::get('admin/subscriber/send-email', [AdminSubscriberController::class, 'send_email'])->name('admin_subscriber_send_email');
+    Route::post('admin/subscriber/send-email-submit', [AdminSubscriberController::class, 'send_email_submit'])->name('admin_subscriber_send_email_submit');
     
     
     

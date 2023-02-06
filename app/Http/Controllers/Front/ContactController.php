@@ -18,7 +18,7 @@ class ContactController extends Controller
     }
 
     public function send_email(Request $request)
-    {
+    { 
         $validator = \Validator::make($request->all(),[
             'name'=>'required',
             'email' => 'required|email',
@@ -47,7 +47,7 @@ class ContactController extends Controller
             $admin_data = Admin::where('id',1)->first();
             $admin_email = $admin_data->email;
 
-            Mail::to($admin_email)->send(new Websitemail($subject,$message));
+            \Mail::to($admin_email)->send(new Websitemail($subject,$message));
 
             return response()->json(['code'=>1,'success_message'=>'Email is sent successfully']);
         }

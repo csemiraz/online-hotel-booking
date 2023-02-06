@@ -82,6 +82,14 @@
                 </a>
             </li>
 
+            
+            <li class="{{ Request::is('admin/subscriber/*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin_subscriber_view') }}"><i class="fas fa-hand-point-right"></i> <span>Subscribers</span>
+                </a>
+            </li>
+
+          
+
 
         </ul>
     </aside>
