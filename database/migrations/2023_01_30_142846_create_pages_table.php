@@ -36,6 +36,9 @@ return new class extends Migration
             $table->tinyInteger('video_gallery_status');
             $table->string('faq_heading');
             $table->tinyInteger('faq_status');
+            $table->string('blog_heading');
+            $table->tinyInteger('blog_status');
+            $table->string('room_heading');
             $table->string('cart_heading');
             $table->tinyInteger('cart_status');
             $table->string('checkout_heading');

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Models\Post;
+use App\Models\Room;
 use App\Models\Slide;
+use App\Models\Feature;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Feature;
-use App\Models\Post;
-use App\Models\Testimonial;
 
 class HomeController extends Controller
 {
@@ -17,6 +18,7 @@ class HomeController extends Controller
         $features = Feature::orderBy('id', 'asc')->get();
         $testimonials = Testimonial::orderBy('id', 'asc')->get();
         $posts = Post::orderBy('id', 'desc')->limit(3)->get();
-        return view("front.home", compact('slides', 'features', 'testimonials', 'posts'));
+        $rooms = Room::limit(4)->get();
+        return view("front.home", compact('slides', 'features', 'testimonials', 'posts', 'rooms'));
     }
 }

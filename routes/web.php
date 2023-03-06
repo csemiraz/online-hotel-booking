@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PostController;
+use App\Http\Controllers\Front\RoomController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\PhotoController;
 use App\Http\Controllers\Front\TermsController;
@@ -42,6 +43,8 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact/send-email', [ContactController::class, 'send_email'])->name('contact_send_email');
 Route::post('/subscriber/send-email', [SubscriberController::class, 'send_email'])->name('subscriber_send_email');
 Route::get('/subscriber/verify/{email}/{token}', [SubscriberController::class, 'verify'])->name('subscriber_verify');
+Route::get('/rooms', [RoomController::class, 'index'])->name('rooms');
+Route::get('/room/{id}', [RoomController::class, 'room_detail'])->name('room_detail');
 
 
 
@@ -128,6 +131,8 @@ Route::group(['middleware'=>['admin:admin']], function() {
     Route::post('admin/page/faq/update', [AdminPageController::class, 'faq_update'])->name('admin_page_faq_update');
     Route::get('admin/page/blog', [AdminPageController::class, 'blog'])->name('admin_page_blog');
     Route::post('admin/page/blog/update', [AdminPageController::class, 'blog_update'])->name('admin_page_blog_update');
+    Route::get('admin/page/room', [AdminPageController::class, 'room'])->name('admin_page_room');
+    Route::post('admin/page/room/update', [AdminPageController::class, 'room_update'])->name('admin_page_room_update');
     Route::get('admin/page/cart', [AdminPageController::class, 'cart'])->name('admin_page_cart');
     Route::post('admin/page/cart/update', [AdminPageController::class, 'cart_update'])->name('admin_page_cart_update');
     Route::get('admin/page/checkout', [AdminPageController::class, 'checkout'])->name('admin_page_checkout');
