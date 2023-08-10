@@ -74,10 +74,10 @@
                                                         <div class="col-md-4"><label class="form-label">Total Rooms</label></div>
                                                         <div class="col-md-8">{{ $room->total_rooms }}</div>
                                                     </div>
-                                                    <div class="form-group row bdb1 pt_10 mb_0">
+                                                    {{-- <div class="form-group row bdb1 pt_10 mb_0">
                                                         <div class="col-md-4"><label class="form-label">Amenities</label></div>
                                                         <div class="col-md-8">{{ $room->name }}</div>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="form-group row bdb1 pt_10 mb_0">
                                                         <div class="col-md-4"><label class="form-label">Size</label></div>
                                                         <div class="col-md-8">{{ $room->size }}</div>

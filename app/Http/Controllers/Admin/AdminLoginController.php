@@ -69,7 +69,7 @@ class AdminLoginController extends Controller
 
         \Mail::to($request->email)->send(new WebsiteMail($subject, $message));
 
-        return redirect()->route('admin_login')->with('success', 'Please check your email addess.');
+        return redirect()->route('admin_login')->with('success', 'Please check your email address.');
         
     }
 

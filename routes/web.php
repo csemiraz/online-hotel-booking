@@ -26,7 +26,10 @@ use App\Http\Controllers\Admin\AdminAmenityController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminSubscriberController;
+use App\Http\Controllers\Customer\CustomerAuthController;
+use App\Http\Controllers\Customer\CustomerHomeController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
+use App\Http\Controllers\Customer\CustomerProfileController;
 
 /* Front */
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -47,6 +50,27 @@ Route::get('/rooms', [RoomController::class, 'index'])->name('rooms');
 Route::get('/room/{id}', [RoomController::class, 'room_detail'])->name('room_detail');
 
 
+/* Customer */
+Route::get('/login', [CustomerAuthController::class, 'login'])->name('customer_login');
+Route::post('/login-submit', [CustomerAuthController::class, 'login_submit'])->name('customer_login_submit');
+Route::get('/logout', [CustomerAuthController::class, 'logout'])->name('customer_logout');
+Route::get('/signup', [CustomerAuthController::class, 'signup'])->name('customer_signup');
+Route::post('/signup-up', [CustomerAuthController::class, 'signup_submit'])->name('customer_signup_submit');
+Route::get('/signup/verify/{email}/{token}', [CustomerAuthController::class, 'signup_verify'])->name('customer_signup_verify');
+Route::get('/forget-password', [CustomerAuthController::class, 'forget_password'])->name('customer_forget_password');
+Route::post('/forget-password-submit', [CustomerAuthController::class, 'forget_password_submit'])->name('customer_forget_password_submit');
+Route::get('/reset-password/{token}/{email}', [CustomerAuthController::class, 'reset_password'])->name('customer_reset_password');
+Route::post('/reset-password-submit', [CustomerAuthController::class, 'reset_password_submit'])->name('customer_reset_password_submit');
+
+
+
+/* Customer Group with Middleware */
+Route::group(['middleware'=>['customer:customer']], function() {
+    Route::get('/customer/home', [CustomerHomeController::class, 'index'])->name('customer_home');
+    Route::get('/edit-profile', [CustomerProfileController::class, 'edit_profile'])->name('customer_edit_profile');
+    Route::post('/edit-profile-submit', [CustomerProfileController::class, 'edit_profile_submit'])->name('customer_edit_profile_submit');
+});
+
 
 /* Admin */
 Route::get('admin/login', [AdminLoginController::class, 'index'])->name('admin_login');
@@ -58,7 +82,7 @@ Route::get('admin/reset-password/{token}/{email}', [AdminLoginController::class,
 Route::post('admin/reset-password-submit', [AdminLoginController::class, 'reset_password_submit'])->name('admin_reset_password_submit');
 
 
-/* Admin Group */
+/* Admin Group with Middleware */
 Route::group(['middleware'=>['admin:admin']], function() {
     Route::get('admin/home', [AdminHomeController::class, 'index'])->name('admin_home');
     Route::get('admin/edit-profile', [AdminProfileController::class, 'edit_profile'])->name('admin_edit_profile');
@@ -143,6 +167,7 @@ Route::group(['middleware'=>['admin:admin']], function() {
     Route::post('admin/page/signup/update', [AdminPageController::class, 'signup_update'])->name('admin_page_signup_update');
     Route::get('admin/page/signin', [AdminPageController::class, 'signin'])->name('admin_page_signin');
     Route::post('admin/page/signin/update', [AdminPageController::class, 'signin_update'])->name('admin_page_signin_update');
+    
     Route::get('admin/subscriber/view', [AdminSubscriberController::class, 'view'])->name('admin_subscriber_view');
     Route::get('admin/subscriber/send-email', [AdminSubscriberController::class, 'send_email'])->name('admin_subscriber_send_email');
     Route::post('admin/subscriber/send-email-submit', [AdminSubscriberController::class, 'send_email_submit'])->name('admin_subscriber_send_email_submit');
