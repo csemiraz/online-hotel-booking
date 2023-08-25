@@ -30,6 +30,7 @@ use App\Http\Controllers\Customer\CustomerAuthController;
 use App\Http\Controllers\Customer\CustomerHomeController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Customer\CustomerProfileController;
+use App\Http\Controllers\Front\BookingController;
 
 /* Front */
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -48,6 +49,9 @@ Route::post('/subscriber/send-email', [SubscriberController::class, 'send_email'
 Route::get('/subscriber/verify/{email}/{token}', [SubscriberController::class, 'verify'])->name('subscriber_verify');
 Route::get('/rooms', [RoomController::class, 'index'])->name('rooms');
 Route::get('/room/{id}', [RoomController::class, 'room_detail'])->name('room_detail');
+Route::get('/cart', [BookingController::class, 'cart_view'])->name('cart');
+Route::post('/booking/submit', [BookingController::class, 'booking_submit'])->name('booking_submit');
+Route::get('/cart/delete/{id}', [BookingController::class, 'cart_delete'])->name('cart_delete');
 
 
 /* Customer */
@@ -61,7 +65,6 @@ Route::get('/forget-password', [CustomerAuthController::class, 'forget_password'
 Route::post('/forget-password-submit', [CustomerAuthController::class, 'forget_password_submit'])->name('customer_forget_password_submit');
 Route::get('/reset-password/{token}/{email}', [CustomerAuthController::class, 'reset_password'])->name('customer_reset_password');
 Route::post('/reset-password-submit', [CustomerAuthController::class, 'reset_password_submit'])->name('customer_reset_password_submit');
-
 
 
 /* Customer Group with Middleware */
