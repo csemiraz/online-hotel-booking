@@ -52,6 +52,7 @@ Route::get('/room/{id}', [RoomController::class, 'room_detail'])->name('room_det
 Route::get('/cart', [BookingController::class, 'cart_view'])->name('cart');
 Route::post('/booking/submit', [BookingController::class, 'booking_submit'])->name('booking_submit');
 Route::get('/cart/delete/{id}', [BookingController::class, 'cart_delete'])->name('cart_delete');
+Route::get('/checkout', [BookingController::class, 'checkout'])->name('checkout');
 
 
 /* Customer */
@@ -70,8 +71,8 @@ Route::post('/reset-password-submit', [CustomerAuthController::class, 'reset_pas
 /* Customer Group with Middleware */
 Route::group(['middleware'=>['customer:customer']], function() {
     Route::get('/customer/home', [CustomerHomeController::class, 'index'])->name('customer_home');
-    Route::get('/edit-profile', [CustomerProfileController::class, 'edit_profile'])->name('customer_edit_profile');
-    Route::post('/edit-profile-submit', [CustomerProfileController::class, 'edit_profile_submit'])->name('customer_edit_profile_submit');
+    Route::get('/customer/edit-profile', [CustomerProfileController::class, 'edit_profile'])->name('customer_edit_profile');
+    Route::post('/customer/edit-profile-submit', [CustomerProfileController::class, 'edit_profile_submit'])->name('customer_edit_profile_submit');
 });
 
 

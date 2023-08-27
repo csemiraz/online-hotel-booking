@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Front;
 use DateTime;
 use Carbon\Carbon;
 use App\Models\Room;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
@@ -102,6 +104,18 @@ class BookingController extends Controller
         }
 
         return redirect()->back()->with('success', 'Cart item is deleted.');
+    }
+
+    public function checkout()
+    {
+        if(!Auth::guard('customer')->check()) {
+            return redirect()->back()->with('error', 'You have to login first to checkout!');
+        }
+        if(!session()->has('cart_room_id')) {
+            return redirect()->back()->with('error', 'Cart is emtpy!');
+        }
+        $customer = Customer::where('email', Auth::guard('customer')->user()->email)->first();
+        return view('front.checkout', compact('customer'));
     }
 
 

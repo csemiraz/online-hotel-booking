@@ -38,7 +38,7 @@ class CustomerProfileController extends Controller
             ]);
             $ext = $request->file('photo')->extension();
             $final_name = 'customer_'.time().'.'.$ext;
-            if(file_exists(public_path('images/'.$customer->photo))) {
+            if(file_exists(public_path('images/'.$customer->photo) && !empty($customer->photo))) {
                 unlink(public_path('images/'.$customer->photo));
             }
             $request->file('photo')->move(public_path('images/'), $final_name);
@@ -47,6 +47,12 @@ class CustomerProfileController extends Controller
 
         $customer->name = $request->name;
         $customer->email = $request->email;
+        $customer->phone = $request->phone;
+        $customer->country = $request->country;
+        $customer->address = $request->address;
+        $customer->state = $request->state;
+        $customer->city = $request->city;
+        $customer->zip = $request->zip;
         $customer->update();
 
         return redirect()->back()->with('success', 'Profile info updated successfully.');

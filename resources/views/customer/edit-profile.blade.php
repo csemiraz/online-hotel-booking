@@ -25,6 +25,30 @@
                                         <input type="text" class="form-control" name="email" value="{{ $customer->email }}">
                                     </div>
                                     <div class="mb-4">
+                                        <label class="form-label">Phone</label>
+                                        <input type="text" class="form-control" name="phone" value="{{ $customer->phone }}">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Country</label>
+                                        <input type="text" class="form-control" name="country" value="{{ $customer->country }}">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Address</label>
+                                        <input type="text" class="form-control" name="address" value="{{ $customer->address }}">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">State</label>
+                                        <input type="text" class="form-control" name="state" value="{{ $customer->state }}">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">City</label>
+                                        <input type="text" class="form-control" name="city" value="{{ $customer->city }}">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Zip Code</label>
+                                        <input type="text" class="form-control" name="zip" value="{{ $customer->zip }}">
+                                    </div>
+                                    <div class="mb-4">
                                         <label class="form-label">Password</label>
                                         <input type="password" class="form-control" name="password">
                                     </div>
