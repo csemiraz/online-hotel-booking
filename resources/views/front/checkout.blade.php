@@ -16,43 +16,92 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-6 checkout-left">
+                @php
+                    if(session()->has('billing_name')) {
+                        $billing_name = session()->get('billing_name');
+                    } else {
+                        $billing_name = $customer->name;
+                    }
 
-                <form action="" method="post" class="frm_checkout" _lpchecked="1">
+                    if(session()->has('billing_email')) {
+                        $billing_email = session()->get('billing_email');
+                    } else {
+                        $billing_email = $customer->email;
+                    }
+
+                    if(session()->has('billing_phone')) {
+                        $billing_phone = session()->get('billing_phone');
+                    } else {
+                        $billing_phone = $customer->phone;
+                    }
+                    if(session()->has('billing_country')) {
+                        $billing_country = session()->get('billing_country');
+                    } else {
+                        $billing_country = $customer->country;
+                    }
+
+                    if(session()->has('billing_address')) {
+                        $billing_address = session()->get('billing_address');
+                    } else {
+                        $billing_address = $customer->address;
+                    }
+
+                    if(session()->has('billing_state')) {
+                        $billing_state = session()->get('billing_state');
+                    } else {
+                        $billing_state = $customer->state;
+                    }
+
+                    if(session()->has('billing_city')) {
+                        $billing_city = session()->get('billing_city');
+                    } else {
+                        $billing_city = $customer->city;
+                    }
+
+                    if(session()->has('billing_zip')) {
+                        $billing_zip = session()->get('billing_zip');
+                    } else {
+                        $billing_zip = $customer->zip;
+                    }
+
+                @endphp
+
+                <form action="{{ route('payment') }}" method="post" class="frm_checkout" _lpchecked="1">
                     @csrf
                     <div class="billing-info">
                         <h4 class="mb_30">Billing Information</h4>
                         <div class="row">
                             <div class="col-lg-6">
                                 <label for="">Name: *</label>
-                                <input type="text" class="form-control mb_15" name="billing_name" value="{{ $customer->name }}">
+                                <input type="text" class="form-control mb_15" name="billing_name" value="{{ $billing_name }}">
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Email Address: *</label>
-                                <input type="text" class="form-control mb_15" name="billing_email" value="patrick@gmail.com">
+                                <input type="text" class="form-control mb_15" name="billing_email" value="{{ $billing_email }}">
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Phone Number: *</label>
-                                <input type="text" class="form-control mb_15" name="billing_phone" value="">
+                                <input type="text" class="form-control mb_15" name="billing_phone" value="{{ $billing_phone }}">
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Country: *</label>
-                                <input type="text" class="form-control mb_15" name="billing_country" value="">
+                                <input type="text" class="form-control mb_15" name="billing_country" value="{{ $billing_country }}">
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Address: *</label>
-                                <input type="text" class="form-control mb_15" name="billing_address" value="">
+                                <input type="text" class="form-control mb_15" name="billing_address" value="{{ $billing_address }}">
                             </div>
                             <div class="col-lg-6">
                                 <label for="">State: *</label>
-                                <input type="text" class="form-control mb_15" name="billing_state" value="">
+                                <input type="text" class="form-control mb_15" name="billing_state" value="{{ $billing_state }}">
                             </div>
                             <div class="col-lg-6">
                                 <label for="">City: *</label>
-                                <input type="text" class="form-control mb_15" name="billing_city" value="">
+                                <input type="text" class="form-control mb_15" name="billing_city" value="{{ $billing_city }}">
                             </div>
                             <div class="col-lg-6">
                                 <label for="">Zip Code: *</label>
-                                <input type="text" class="form-control mb_15" name="billing_zip" value="">
+                                <input type="text" class="form-control mb_15" name="billing_zip" value="{{ $billing_zip }}">
                             </div>
                         </div>
                     </div>

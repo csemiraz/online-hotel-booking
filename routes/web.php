@@ -53,6 +53,9 @@ Route::get('/cart', [BookingController::class, 'cart_view'])->name('cart');
 Route::post('/booking/submit', [BookingController::class, 'booking_submit'])->name('booking_submit');
 Route::get('/cart/delete/{id}', [BookingController::class, 'cart_delete'])->name('cart_delete');
 Route::get('/checkout', [BookingController::class, 'checkout'])->name('checkout');
+Route::post('/payment', [BookingController::class, 'payment'])->name('payment');
+Route::get('/payment/paypal/{price}', [BookingController::class, 'paypal'])->name('paypal');
+Route::post('/payment/stripe/{price}', [BookingController::class, 'stripe'])->name('stripe');
 
 
 /* Customer */
