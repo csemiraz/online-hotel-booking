@@ -9,6 +9,7 @@ use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\PhotoController;
 use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\VideoController;
+use App\Http\Controllers\Front\BookingController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\PrivacyController;
 use App\Http\Controllers\Admin\AdminFaqController;
@@ -29,8 +30,8 @@ use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Customer\CustomerAuthController;
 use App\Http\Controllers\Customer\CustomerHomeController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
+use App\Http\Controllers\Customer\CustomerOrderController;
 use App\Http\Controllers\Customer\CustomerProfileController;
-use App\Http\Controllers\Front\BookingController;
 
 /* Front */
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -76,6 +77,8 @@ Route::group(['middleware'=>['customer:customer']], function() {
     Route::get('/customer/home', [CustomerHomeController::class, 'index'])->name('customer_home');
     Route::get('/customer/edit-profile', [CustomerProfileController::class, 'edit_profile'])->name('customer_edit_profile');
     Route::post('/customer/edit-profile-submit', [CustomerProfileController::class, 'edit_profile_submit'])->name('customer_edit_profile_submit');
+    Route::get('/customer/order/view', [CustomerOrderController::class, 'index'])->name('customer_order_view');
+    Route::get('/customer/order/invoice/{id}', [CustomerOrderController::class, 'orderInvoice'])->name('customer_order_invoice');
 });
 
 
