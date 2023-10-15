@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminRoomController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminVideoController;
@@ -202,5 +203,9 @@ Route::group(['middleware'=>['admin:admin']], function() {
     
     Route::get('admin/customers', [AdminCustomerController::class, 'index'])->name('admin_customers');
     Route::get('admin/customer-change-status/{id}', [AdminCustomerController::class, 'change_status'])->name('admin_customer_change_status');
+
+    Route::get('admin/order/view', [AdminOrderController::class, 'index'])->name('admin_order_view');
+    Route::get('admin/order/invoice/{id}', [AdminOrderController::class, 'orderInvoice'])->name('admin_order_invoice');
+    Route::get('admin/order/delete/{id}', [AdminOrderController::class, 'order_delete'])->name('admin_order_delete');
     
 });

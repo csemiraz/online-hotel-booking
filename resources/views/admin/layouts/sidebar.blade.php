@@ -103,6 +103,10 @@
                 <a class="nav-link" href="{{ route('admin_customers') }}"><i class="fas fa-hand-point-right"></i> <span>Customers</span>
                 </a>
             </li>
+            <li class="{{ Request::is('admin/order/*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin_order_view') }}"><i class="fas fa-hand-point-right"></i> <span>Customer Orders</span>
+                </a>
+            </li>
 
           
 
