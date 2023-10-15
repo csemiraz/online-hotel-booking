@@ -26,6 +26,7 @@ use App\Http\Controllers\Front\SubscriberController;
 use App\Http\Controllers\Admin\AdminAmenityController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\AdminCustomerController;
 use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Customer\CustomerAuthController;
 use App\Http\Controllers\Customer\CustomerHomeController;
@@ -199,8 +200,7 @@ Route::group(['middleware'=>['admin:admin']], function() {
     Route::post('admin/room/gallery/store/{id}', [AdminRoomController::class, 'gallery_store'])->name('admin_room_gallery_store');
     Route::get('admin/room/gallery/delete/{id}', [AdminRoomController::class, 'gallery_delete'])->name('admin_room_gallery_delete');
     
-    
-    
-    
+    Route::get('admin/customers', [AdminCustomerController::class, 'index'])->name('admin_customers');
+    Route::get('admin/customer-change-status/{id}', [AdminCustomerController::class, 'change_status'])->name('admin_customer_change_status');
     
 });
