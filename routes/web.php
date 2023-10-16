@@ -35,6 +35,7 @@ use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Customer\CustomerOrderController;
 use App\Http\Controllers\Customer\CustomerProfileController;
 
+
 /* Front */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
