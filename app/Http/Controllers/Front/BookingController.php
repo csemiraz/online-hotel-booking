@@ -9,6 +9,8 @@ use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Payment;
 use App\Models\Customer;
+use App\Mail\Websitemail;
+use App\Models\BookedRoom;
 use App\Models\OrderDetail;
 use PayPal\Api\Transaction;
 use Illuminate\Http\Request;
@@ -16,7 +18,6 @@ use PayPal\Api\PaymentExecution;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Mail\Websitemail;
 Use Stripe;
 
 class BookingController extends Controller
@@ -38,19 +39,40 @@ class BookingController extends Controller
         $checkin_date = $dates[0];
         $checkout_date = $dates[1];
 
-       /*  $d1 = explode('/', $checkin_date);
+        $d1 = explode('/', $checkin_date);
         $d2 = explode('/', $checkout_date);
         $d1_new = $d1[2].'-'.$d1[1].'-'.$d1[0];
         $d2_new = $d2[2].'-'.$d2[1].'-'.$d2[0];
         $t1 = strtotime($d1_new);
         $t2 = strtotime($d2_new);
-         */
+        
+        $cnt = 1;
+        while(1) {
+            if($t1>=$t2) {
+                break;
+            }
+            $single_date = date('d/m/Y',$t1);
+            $total_already_booked_rooms = BookedRoom::where('booking_date',$single_date)->where('room_id',$request->room_id)->count();
 
-         session()->push('cart_room_id', $request->room_id);
-         session()->push('cart_checkin_date', $checkin_date);
-         session()->push('cart_checkout_date', $checkout_date);
-         session()->push('cart_adult', $request->adult);
-         session()->push('cart_children', $request->children);
+            $arr = Room::where('id',$request->room_id)->first();
+            $total_allowed_rooms = $arr->total_rooms;
+
+            if($total_already_booked_rooms == $total_allowed_rooms) {
+                $cnt = 0;
+                break;
+            }
+            $t1 = strtotime('+1 day',$t1);
+        }
+
+        if($cnt == 0) {
+            return redirect()->back()->with('error', 'Maximum number of this room is already booked.');
+        }  
+
+        session()->push('cart_room_id', $request->room_id);
+        session()->push('cart_checkin_date', $checkin_date);
+        session()->push('cart_checkout_date', $checkout_date);
+        session()->push('cart_adult', $request->adult);
+        session()->push('cart_children', $request->children);
 
          return redirect()->back()->with('success', 'Room is added to the cart successfully.');
     }
@@ -270,7 +292,7 @@ class BookingController extends Controller
                 $obj->subtotal = $sub;
                 $obj->save();
 
-               /*  while(1) {
+                while(1) {
                     if($t1>=$t2) {
                         break;
                     }
@@ -283,7 +305,7 @@ class BookingController extends Controller
     
                     $t1 = strtotime('+1 day',$t1);
                 }
- */
+
             }
 
             $subject = 'New Order';
@@ -422,7 +444,7 @@ class BookingController extends Controller
             $obj->subtotal = $sub;
             $obj->save();
 
-           /*  while(1) {
+            while(1) {
                 if($t1>=$t2) {
                     break;
                 }
@@ -434,7 +456,7 @@ class BookingController extends Controller
                 $obj->save();
 
                 $t1 = strtotime('+1 day',$t1);
-            } */
+            }
 
         }
 
