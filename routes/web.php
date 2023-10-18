@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminCustomerController;
+use App\Http\Controllers\Admin\AdminDatewiseController;
 use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Customer\CustomerAuthController;
 use App\Http\Controllers\Customer\CustomerHomeController;
@@ -211,5 +212,7 @@ Route::group(['middleware'=>['admin:admin']], function() {
     Route::get('admin/order/delete/{id}', [AdminOrderController::class, 'order_delete'])->name('admin_order_delete');
     Route::get('admin/setting', [AdminSettingController::class, 'index'])->name('admin_setting');
     Route::post('admin/setting/update', [AdminSettingController::class, 'setting_update'])->name('admin_setting_update');
+    Route::get('admin/datewise-rooms', [AdminDatewiseController::class, 'index'])->name('admin_datewise_rooms');
+    Route::post('admin/datewise-rooms/submit', [AdminDatewiseController::class, 'datewise_submit'])->name('admin_datewise_rooms_submit');
     
 });
