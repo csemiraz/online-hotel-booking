@@ -27,6 +27,7 @@ use App\Http\Controllers\Front\SubscriberController;
 use App\Http\Controllers\Admin\AdminAmenityController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminCustomerController;
 use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Customer\CustomerAuthController;
@@ -208,5 +209,7 @@ Route::group(['middleware'=>['admin:admin']], function() {
     Route::get('admin/order/view', [AdminOrderController::class, 'index'])->name('admin_order_view');
     Route::get('admin/order/invoice/{id}', [AdminOrderController::class, 'orderInvoice'])->name('admin_order_invoice');
     Route::get('admin/order/delete/{id}', [AdminOrderController::class, 'order_delete'])->name('admin_order_delete');
+    Route::get('admin/setting', [AdminSettingController::class, 'index'])->name('admin_setting');
+    Route::post('admin/setting/update', [AdminSettingController::class, 'setting_update'])->name('admin_setting_update');
     
 });
