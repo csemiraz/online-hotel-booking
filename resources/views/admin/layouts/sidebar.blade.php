@@ -9,17 +9,17 @@
 
         <ul class="sidebar-menu">
 
-            <li class="{{ Request::is('admin/home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
+            <li class="{{ Request::is('admin/home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home') }}"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
 
-            <li class="{{ Request::is('admin/setting') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_setting') }}"><i class="fas fa-hand-point-right"></i> <span>Settings</span></a></li>
+            <li class="{{ Request::is('admin/setting') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_setting') }}"><i class="fas fa-wrench"></i> <span>Settings</span></a></li>
 
             <li class="{{ Request::is('admin/datewise-rooms') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('admin_datewise_rooms') }}"><i class="fas fa-hand-point-right"></i> <span>Datewise Rooms</span>
+                <a class="nav-link" href="{{ route('admin_datewise_rooms') }}"><i class="fas fa-table"></i> <span>Datewise Rooms</span>
                 </a>
             </li>
 
             <li class="nav-item dropdown {{ Request::is('admin/amenity/view') || Request::is('admin/room/view') ? 'active' : ''}}">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Room Section</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-procedures"></i><span>Room Section</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/amenity/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_amenity_view') }}"><i class="fas fa-angle-right"></i> Amenities</a></li>
 
@@ -28,7 +28,7 @@
             </li>
 
             <li class="nav-item dropdown {{ Request::is('admin/page/*') ? 'active' : ''}}">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Pages</span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-book-open"></i><span>Pages</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('admin/page/about') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_page_about') }}"><i class="fas fa-angle-right"></i> About</a></li>
 
@@ -66,7 +66,7 @@
             </li>
 
             <li class="{{ Request::is('admin/slide/*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('admin_slide_view') }}"><i class="fas fa-hand-point-right"></i> <span>Slide</span>
+                <a class="nav-link" href="{{ route('admin_slide_view') }}"><i class="fab fa-slideshare"></i> <span>Slide</span>
                 </a>
             </li>
 
@@ -76,41 +76,41 @@
             </li>
 
             <li class="{{ Request::is('admin/testimonial/*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('admin_testimonial_view') }}"><i class="fas fa-hand-point-right"></i> <span>Testimonial</span>
+                <a class="nav-link" href="{{ route('admin_testimonial_view') }}"><i class="fas fa-comment-alt"></i> <span>Testimonial</span>
                 </a>
             </li>
 
             <li class="{{ Request::is('admin/post/*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('admin_post_view') }}"><i class="fas fa-hand-point-right"></i> <span>Post</span>
+                <a class="nav-link" href="{{ route('admin_post_view') }}"><i class="fas fa-spell-check"></i> <span>Post</span>
                 </a>
             </li>
 
             <li class="{{ Request::is('admin/photo/*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('admin_photo_view') }}"><i class="fas fa-hand-point-right"></i> <span>Photo</span>
+                <a class="nav-link" href="{{ route('admin_photo_view') }}"><i class="fas fa-images"></i> <span>Photo</span>
                 </a>
             </li>
 
             <li class="{{ Request::is('admin/video/*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('admin_video_view') }}"><i class="fas fa-hand-point-right"></i> <span>Video</span>
+                <a class="nav-link" href="{{ route('admin_video_view') }}"><i class="fas fa-video"></i> <span>Video</span>
                 </a>
             </li>
 
             <li class="{{ Request::is('admin/faq/*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('admin_faq_view') }}"><i class="fas fa-hand-point-right"></i> <span>FAQ</span>
+                <a class="nav-link" href="{{ route('admin_faq_view') }}"><i class="fas fa-question-circle"></i> <span>FAQ</span>
                 </a>
             </li>
 
             
             <li class="{{ Request::is('admin/subscriber/*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('admin_subscriber_view') }}"><i class="fas fa-hand-point-right"></i> <span>Subscribers</span>
+                <a class="nav-link" href="{{ route('admin_subscriber_view') }}"><i class="fas fa-users-slash"></i> <span>Subscribers</span>
                 </a>
             </li>
             <li class="{{ Request::is('admin/customers/*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('admin_customers') }}"><i class="fas fa-hand-point-right"></i> <span>Customers</span>
+                <a class="nav-link" href="{{ route('admin_customers') }}"><i class="fas fa-users"></i> <span>Customers</span>
                 </a>
             </li>
             <li class="{{ Request::is('admin/order/*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('admin_order_view') }}"><i class="fas fa-hand-point-right"></i> <span>Customer Orders</span>
+                <a class="nav-link" href="{{ route('admin_order_view') }}"><i class="fas fa-store"></i> <span>Customer Orders</span>
                 </a>
             </li>
 

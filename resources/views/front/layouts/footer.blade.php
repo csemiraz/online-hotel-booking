@@ -48,8 +48,7 @@
                             <i class="fa fa-map-marker"></i>
                         </div>
                         <div class="right">
-                            34 Antiger Lane,<br>
-                            PK Lane, USA, 12937
+                            {{ $global_setting_data->footer_address }}
                         </div>
                     </div>
                     <div class="list-item">
@@ -57,7 +56,7 @@
                             <i class="fa fa-volume-control-phone"></i>
                         </div>
                         <div class="right">
-                            contact@arefindev.com
+                            {{ $global_setting_data->footer_phone }}
                         </div>
                     </div>
                     <div class="list-item">
@@ -65,14 +64,14 @@
                             <i class="fa fa-envelope-o"></i>
                         </div>
                         <div class="right">
-                            122-222-1212
+                            {{ $global_setting_data->footer_email }}
                         </div>
                     </div>
                     <ul class="social">
-                        <li><a href=""><i class="fa fa-facebook-f"></i></a></li>
-                        <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                        <li><a href=""><i class="fa fa-pinterest-p"></i></a></li>
-                        <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="{{ $global_setting_data->facebook }}"><i class="fa fa-facebook-f"></i></a></li>
+                        <li><a href="{{ $global_setting_data->twitter }}"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="{{ $global_setting_data->pinterest }}"><i class="fa fa-pinterest-p"></i></a></li>
+                        <li><a href="{{ $global_setting_data->linkedin }}"><i class="fa fa-linkedin"></i></a></li>
                         <li><a href=""><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
@@ -102,7 +101,9 @@
 </div>
 
 <div class="copyright">
-    Copyright 2022, ArefinDev. All Rights Reserved.
+    Copyright &copy; @php
+        echo date('Y')
+    @endphp, Hotel Booking. All Rights Reserved.
 </div>
 
 <div class="scroll-top">
