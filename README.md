@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Online Hotel Booking - README</title>
 </head>
 <body>
   <h1>🏨 Online Hotel Booking System</h1>
